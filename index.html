@@ -385,35 +385,39 @@
     // Google Apps Script URL für Tracking
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxcw79TYXsPwLWMcCV25U6_sy_aC5jeLs5DyarVN2LdfkMfKq1KAKymRjukcAEBfk2F/exec';
 
-    document.getElementById('whatsappButton').addEventListener('click', function(e) {
-      e.preventDefault();
+    document.addEventListener('DOMContentLoaded', function() {
+      const button = document.getElementById('whatsappButton');
       
-      // Daten sammeln
-      const timestamp = new Date().toISOString();
-      const userAgent = navigator.userAgent;
-      const referrer = document.referrer || 'Direkt';
-      
-      // An Google Sheets senden
-      fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          timestamp: timestamp,
-          action: 'WhatsApp Kontakt',
-          userAgent: userAgent,
-          referrer: referrer
-        })
-      }).then(() => {
-        // Weiterleitung zu WhatsApp
-        window.open('https://wa.me/4917641207095', '_blank');
-      }).catch(error => {
-        console.error('Tracking-Fehler:', error);
-        // Trotzdem zu WhatsApp weiterleiten
-        window.open('https://wa.me/4917641207095', '_blank');
-      });
+      if (button) {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Sofort zu WhatsApp weiterleiten
+          window.location.href = 'https://wa.me/4917641207095';
+          
+          // Tracking im Hintergrund senden
+          const timestamp = new Date().toISOString();
+          const userAgent = navigator.userAgent;
+          const referrer = document.referrer || 'Direkt';
+          
+          // An Google Sheets senden (asynchron)
+          fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              timestamp: timestamp,
+              action: 'WhatsApp Kontakt',
+              userAgent: userAgent,
+              referrer: referrer
+            })
+          }).catch(error => {
+            console.log('Tracking-Fehler:', error);
+          });
+        });
+      }
     });
   </script>
 </body>

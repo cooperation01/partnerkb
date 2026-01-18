@@ -3,40 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Laura Hadyk — Immobilien | Ruhrgebiet</title>
+  <title>Laura Hadyk — Immobilien im Ruhrgebiet</title>
   <meta name="description" content="Immobilienverkauf & Verwaltung im Ruhrgebiet. Unverbindlich per WhatsApp anfragen." />
 
   <style>
     :root{
       --bg:#0b0f17;
       --card:#121a28;
-      --text:#eaf0ff;
-      --muted:#b8c4dd;
+      --text:#eef3ff;
+      --muted:#b7c4de;
       --accent:#caa46a;
-      --accent2:#f1d7a5;
       --border: rgba(255,255,255,.10);
-      --shadow: 0 16px 50px rgba(0,0,0,.40);
-      --radius: 22px;
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --r:22px;
       --max: 1080px;
     }
-
-    {box-sizing:border-box}
+    *{box-sizing:border-box}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
       background:
-        radial-gradient(900px 520px at 25% 20%, rgba(202,164,106,.22), transparent 60%),
-        radial-gradient(900px 520px at 80% 10%, rgba(120,180,255,.14), transparent 60%),
+        radial-gradient(900px 520px at 22% 18%, rgba(202,164,106,.22), transparent 60%),
+        radial-gradient(900px 520px at 82% 10%, rgba(120,180,255,.14), transparent 60%),
         var(--bg);
     }
-
     .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 56px;}
-    header{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:22px;}
+    header{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:20px;}
     .brand{display:flex; gap:10px; align-items:center;}
-    .dot{width:10px; height:10px; border-radius:99px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:0 0 0 6px rgba(202,164,106,.14);}
-    .brand b{letter-spacing:.08em; text-transform:uppercase; font-size:12px; color:var(--muted)}
-    .brand span{display:block; font-weight:700; font-size:14px; color:var(--text); letter-spacing:.02em}
+    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),#f1d7a5);box-shadow:0 0 0 6px rgba(202,164,106,.14);}
+    .brand b{display:block;letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--muted)}
+    .brand span{display:block;font-weight:800;font-size:14px;letter-spacing:.02em}
 
     .hero{
       display:grid;
@@ -44,7 +41,7 @@
       gap:22px;
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: var(--r);
       box-shadow: var(--shadow);
       padding:28px;
       align-items:center;
@@ -66,20 +63,17 @@
     }
 
     h1{margin:14px 0 10px; font-size:44px; line-height:1.05; letter-spacing:-.02em;}
-    .sub{margin:0 0 18px; color:var(--muted); font-size:16px; line-height:1.55; max-width:54ch;}
+    .sub{margin:0 0 18px; color:var(--muted); font-size:16px; line-height:1.55; max-width:56ch;}
 
     .bullets{display:grid; gap:10px; margin:18px 0 22px; padding:0; list-style:none;}
-    .bullets li{
-      display:flex; gap:10px; align-items:flex-start;
-      color:var(--muted); font-size:14px; line-height:1.5;
-    }
+    .bullets li{display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-size:14px; line-height:1.5;}
     .check{
-      width:18px; height:18px; border-radius:6px;
+      width:18px;height:18px;border-radius:6px;
       background:rgba(202,164,106,.18);
       border:1px solid rgba(202,164,106,.35);
-      display:inline-flex; align-items:center; justify-content:center;
-      color:var(--accent2); flex:0 0 auto; margin-top:1px;
-      font-size:12px; font-weight:800;
+      display:inline-flex;align-items:center;justify-content:center;
+      color:#f1d7a5;flex:0 0 auto;margin-top:1px;
+      font-size:12px;font-weight:900;
     }
 
     .ctaRow{display:flex; gap:12px; align-items:center; flex-wrap:wrap;}
@@ -88,11 +82,11 @@
       gap:10px;
       padding:13px 16px;
       border-radius:999px;
-      border:1px solid rgba(202,164,106,.38);
+      border:1px solid rgba(202,164,106,.42);
       background: linear-gradient(135deg, rgba(202,164,106,.30), rgba(241,215,165,.14));
       color:var(--text);
       text-decoration:none;
-      font-weight:700;
+      font-weight:800;
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
       transition: transform .15s ease, filter .15s ease;
       min-width: 240px;
@@ -113,9 +107,6 @@
       border:1px solid rgba(255,255,255,.10);
       overflow:hidden;
       background:#0f1624;
-      display:flex;
-      align-items:center;
-      justify-content:center;
     }
     .portrait img{
       width:100%;
@@ -124,7 +115,6 @@
       object-position:center;
       display:block;
     }
-
     .mini{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -140,12 +130,7 @@
     .stat b{display:block; font-size:13px; letter-spacing:.02em}
     .stat span{display:block; margin-top:4px; color:var(--muted); font-size:12px; line-height:1.35}
 
-    footer{
-      margin-top:18px;
-      color: rgba(184,196,221,.75);
-      font-size:12px;
-      text-align:center;
-    }
+    footer{margin-top:18px;color: rgba(184,196,221,.75);font-size:12px;text-align:center;}
 
     @media (max-width: 880px){
       .hero{grid-template-columns: 1fr; padding:20px;}
@@ -173,13 +158,13 @@
         <div class="kicker">IHK Immobilienmaklerin · Verwaltung</div>
         <h1>Unverbindlich per WhatsApp anfragen</h1>
         <p class="sub">
-          Ob Verkauf, Vermietung oder Verwaltung: Schreib mir kurz auf WhatsApp — ich melde mich zeitnah mit einer klaren Einschätzung und den nächsten Schritten.
+          Kurze Nachricht genügt. Ich melde mich zeitnah mit einer klaren Einschätzung und den nächsten Schritten.
         </p>
 
         <ul class="bullets">
           <li><span class="check">✓</span><span>Schnelle Rückmeldung (werktags)</span></li>
-          <li><span class="check">✓</span><span>Ruhrgebiet & Umgebung</span></li>
-          <li><span class="check">✓</span><span>Klarer Prozess, transparent & strukturiert</span></li>
+          <li><span class="check">✓</span><span>Verkauf, Vermietung & Verwaltung</span></li>
+          <li><span class="check">✓</span><span>Transparent, strukturiert, zuverlässig</span></li>
         </ul>
 
         <div class="ctaRow">
@@ -192,23 +177,22 @@
           >
             WhatsApp öffnen
           </a>
-          <div class="hint">Kein Spam · kurze Nachricht genügt</div>
+          <div class="hint">Kein Spam · kurze Anfrage reicht</div>
         </div>
       </div>
 
       <aside class="card">
         <div class="portrait">
-          <!-- Bilddatei: hier deinen Upload eintragen, z.B. laura.png -->
           <img src="{4E40C66B-5FCB-4FC6-B239-DBFBF149031C}.png" alt="Laura Hadyk" />
         </div>
         <div class="mini">
           <div class="stat">
             <b>Verkauf</b>
-            <span>Positionierung, Exposé, Besichtigungen</span>
+            <span>Realistische Einschätzung, klare Vermarktung</span>
           </div>
           <div class="stat">
             <b>Verwaltung</b>
-            <span>Eigentümer & Mieter professionell betreut</span>
+            <span>Professionelle Betreuung von A bis Z</span>
           </div>
         </div>
       </aside>
@@ -220,7 +204,7 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    const WEB_APP_URL = "__YOUR_WEB_APP_URL__"; // <-- HIER deine Apps Script Web-App URL /exec einsetzen
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxcw79TYXsPwLWMcCV25U6_sy_aC5jeLs5DyarVN2LdfkMfKq1KAKymRjukcAEBfk2F/exec";
 
     function getUTM() {
       const p = new URLSearchParams(location.search);
@@ -234,11 +218,9 @@
     }
 
     function track(params) {
-      if (!WEB_APP_URL || WEB_APP_URL.includes("__YOUR_WEB_APP_URL__")) return;
-
+      if (!WEB_APP_URL) return;
       const u = new URL(WEB_APP_URL);
       Object.entries(params).forEach(([k,v]) => u.searchParams.set(k, v || ""));
-      // CORS-sicher (auch auf GitHub Pages): Pixel-Request
       (new Image()).src = u.toString();
     }
 

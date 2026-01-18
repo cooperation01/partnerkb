@@ -27,7 +27,7 @@
         radial-gradient(900px 520px at 22% 18%, rgba(202,164,106,.22), transparent 60%),
         radial-gradient(900px 520px at 82% 10%, rgba(120,180,255,.14), transparent 60%),
         var(--bg);
-      min-height: 150vh; /* damit man scrollen kann /
+      min-height: 150vh; /* damit man scrollen kann */
     }
     .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 56px;}
     header{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:20px;}
@@ -108,3 +108,146 @@
       border:1px solid rgba(255,255,255,.10);
       overflow:hidden;
       background:#0f1624;
+      position: relative;
+    }
+    .portrait img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+      transition: transform 0.1s ease-out; /* smooth parallax */
+    }
+    .mini{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .mini .stat{
+      border:1px solid var(--border);
+      border-radius: 16px;
+      padding:12px;
+      background: rgba(11,15,23,.35);
+    }
+    .stat b{display:block; font-size:13px; letter-spacing:.02em}
+    .stat span{display:block; margin-top:4px; color:var(--muted); font-size:12px; line-height:1.35}
+
+    footer{margin-top:18px;color: rgba(184,196,221,.75);font-size:12px;text-align:center;}
+
+    @media (max-width: 880px){
+      .hero{grid-template-columns: 1fr; padding:20px;}
+      h1{font-size:34px;}
+      .btn{min-width: 100%;}
+      .mini{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="dot"></div>
+        <div>
+          <b>Immobilien · Ruhrgebiet</b>
+          <span>Laura Hadyk</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="kicker">IHK Immobilienmaklerin · Verwaltung</div>
+        <h1>Unverbindlich per WhatsApp anfragen</h1>
+        <p class="sub">
+          Kurze Nachricht genügt. Ich melde mich zeitnah mit einer klaren Einschätzung und den nächsten Schritten.
+        </p>
+
+        <ul class="bullets">
+          <li><span class="check">✓</span><span>Schnelle Rückmeldung (werktags)</span></li>
+          <li><span class="check">✓</span><span>Verkauf, Vermietung & Verwaltung</span></li>
+          <li><span class="check">✓</span><span>Transparent, strukturiert, zuverlässig</span></li>
+        </ul>
+
+        <div class="ctaRow">
+          <a
+            class="btn js-wa"
+            data-placement="main"
+            href="https://wa.me/4917641207095"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp öffnen
+          </a>
+          <div class="hint">Kein Spam · kurze Anfrage reicht</div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <div class="portrait">
+          <img id="parallaxImg" src="generated_image_1768763025_0.png" alt="Laura Hadyk" />
+        </div>
+        <div class="mini">
+          <div class="stat">
+            <b>Verkauf</b>
+            <span>Realistische Einschätzung, klare Vermarktung</span>
+          </div>
+          <div class="stat">
+            <b>Verwaltung</b>
+            <span>Professionelle Betreuung von A bis Z</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer>© <span id="y"></span> Laura Hadyk</footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxcw79TYXsPwLWMcCV25U6_sy_aC5jeLs5DyarVN2LdfkMfKq1KAKymRjukcAEBfk2F/exec";
+
+    function getUTM() {
+      const p = new URLSearchParams(location.search);
+      return {
+        utm_source: p.get("utm_source") || "",
+        utm_medium: p.get("utm_medium") || "",
+        utm_campaign: p.get("utm_campaign") || "",
+        utm_term: p.get("utm_term") || "",
+        utm_content: p.get("utm_content") || ""
+      };
+    }
+
+    function track(params) {
+      if (!WEB_APP_URL) return;
+      const u = new URL(WEB_APP_URL);
+      Object.entries(params).forEach(([k,v]) => u.searchParams.set(k, v || ""));
+      (new Image()).src = u.toString();
+    }
+
+    document.querySelectorAll(".js-wa").forEach(a => {
+      a.addEventListener("click", () => {
+        const utm = getUTM();
+        track({
+          event: "whatsapp_click",
+          placement: a.dataset.placement || "main",
+          href: a.href,
+          ua: navigator.userAgent,
+          ref: document.referrer || "",
+          ...utm
+        });
+      });
+    });
+
+    // Parallax Scroll Effekt (leicht nach unten beim Scrollen)
+    const img = document.getElementById('parallaxImg');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const offset = scrollY * 0.15; // 0.15 = subtil, erhöhe für stärkeren Effekt
+      img.style.transform = `translateY(${offset}px)`;
+    });
+  </script>
+</body>
+</html>

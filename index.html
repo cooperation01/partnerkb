@@ -27,7 +27,7 @@
         radial-gradient(900px 520px at 22% 18%, rgba(202,164,106,.22), transparent 60%),
         radial-gradient(900px 520px at 82% 10%, rgba(120,180,255,.14), transparent 60%),
         var(--bg);
-      min-height: 150vh; /* damit man scrollen kann */
+      min-height: 150vh;
     }
     .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 56px;}
     header{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:20px;}
@@ -38,7 +38,7 @@
 
     .hero{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: .85fr 1.15fr;
       gap:22px;
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--border);
@@ -93,7 +93,6 @@
       min-width: 240px;
     }
     .btn:hover{transform: translateY(-1px); filter: brightness(1.05);}
-    .hint{color:var(--muted); font-size:12px}
 
     .card{
       background: rgba(18,26,40,.65);
@@ -116,7 +115,7 @@
       object-fit:cover;
       object-position:center;
       display:block;
-      transition: transform 0.1s ease-out; /* smooth parallax */
+      transition: transform 0.1s ease-out;
     }
     .mini{
       display:grid;
@@ -157,33 +156,6 @@
     </header>
 
     <section class="hero">
-      <div>
-        <div class="kicker">IHK Immobilienmaklerin · Verwaltung</div>
-        <h1>Unverbindlich per WhatsApp anfragen</h1>
-        <p class="sub">
-          Kurze Nachricht genügt. Ich melde mich zeitnah mit einer klaren Einschätzung und den nächsten Schritten.
-        </p>
-
-        <ul class="bullets">
-          <li><span class="check">✓</span><span>Schnelle Rückmeldung (werktags)</span></li>
-          <li><span class="check">✓</span><span>Verkauf, Vermietung & Verwaltung</span></li>
-          <li><span class="check">✓</span><span>Transparent, strukturiert, zuverlässig</span></li>
-        </ul>
-
-        <div class="ctaRow">
-          <a
-            class="btn js-wa"
-            data-placement="main"
-            href="https://wa.me/4917641207095"
-            target="_blank"
-            rel="noopener"
-          >
-            WhatsApp öffnen
-          </a>
-          <div class="hint">Kein Spam · kurze Anfrage reicht</div>
-        </div>
-      </div>
-
       <aside class="card">
         <div class="portrait">
           <img id="parallaxImg" src="generated_image_1768763025_0.png" alt="Laura Hadyk" />
@@ -199,6 +171,32 @@
           </div>
         </div>
       </aside>
+
+      <div>
+        <div class="kicker">IHK Immobilienmaklerin · Verwaltung</div>
+        <h1>Unverbindlich per WhatsApp anfragen</h1>
+        <p class="sub">
+          Kurze Nachricht genügt. Ich melde mich zeitnah mit einer klaren Einschätzung und den nächsten Schritten.
+        </p>
+
+        <ul class="bullets">
+          <li><span class="check">✓</span><span>Schnelle Rückmeldung</span></li>
+          <li><span class="check">✓</span><span>Verkauf, Vermietung & Verwaltung</span></li>
+          <li><span class="check">✓</span><span>Transparent, strukturiert, zuverlässig</span></li>
+        </ul>
+
+        <div class="ctaRow">
+          <a
+            class="btn js-wa"
+            data-placement="main"
+            href="https://wa.me/4917641207095"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp öffnen
+          </a>
+        </div>
+      </div>
     </section>
 
     <footer>© <span id="y"></span> Laura Hadyk</footer>
@@ -241,11 +239,11 @@
       });
     });
 
-    // Parallax Scroll Effekt (leicht nach unten beim Scrollen)
+    // Parallax Scroll Effekt
     const img = document.getElementById('parallaxImg');
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
-      const offset = scrollY * 0.15; // 0.15 = subtil, erhöhe für stärkeren Effekt
+      const offset = scrollY * 0.15;
       img.style.transform = `translateY(${offset}px)`;
     });
   </script>
